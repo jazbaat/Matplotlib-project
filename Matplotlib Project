@@ -1,0 +1,73 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import webbrowser
+import pyttsx3
+
+engine = pyttsx3.init()
+engine.setProperty('rate', 130)
+
+Emails = []
+email = input("Enter Your Email? ")
+
+if "@" in email and ".com" in email:
+    print("Successfully registered")
+    pyttsx3.speak('Successfully registered')
+    Emails.append(email)
+    name = input("Enter Your Name? ")
+    marks = input('Enter your Total Marks? ')
+    if len(name) <= 3:
+        print("Wrong name")
+        print("You are scam")
+    else:
+        print("We have two type of graphs Which one you want to generate? ")
+        pyttsx3.speak('We have two type of graphs Which one you want to generate')
+        print("1: Pie Graph(pg)            2: Bar Graph(bg)       3: no")
+
+        graph = input("Enter command here? ")
+        print("")
+        if graph == "pg":
+            physics = int(input("Enter Your Physics Percentage? "))
+            english = int(input("Enter Your English Percentage? "))
+            math = int(input("Enter Your Math Percentage? "))
+            urdu = int(input("Enter Your Urdu Percentage? "))
+            computer = int(input("Enter Your Computer Science Percentage? "))
+            islam = int(input("Enter Your Islamiyat Percentage? "))
+
+            graph = np.array([physics, english, math, urdu, computer, islam])
+            labels = ['Physics', 'English', 'Math', 'Urdu', 'Computer', 'Islamiyat']
+            color = ['navy', 'crimson', 'maroon', 'chocolate', 'blue', 'green', 'dodgerblue']
+            explode = [0,0,0,0,0,0,0,0.1]
+
+
+            plt.pie(graph, labels=labels, colors = color)
+            plt.legend()
+            plt.show()
+
+
+
+        elif graph == 'bg':
+            physics = int(input("Enter Your Physics Percentage? "))
+            english = int(input("Enter Your English Percentage? "))
+            math = int(input("Enter Your Math Percentage? "))
+            urdu = int(input("Enter Your Urdu Percentage? "))
+            computer = int(input("Enter Your Computer Science Percentage? "))
+            islam = int(input("Enter Your Islamiyat Percentage? "))
+
+            graph = np.array([physics, english, math, urdu, computer, islam])
+            labels = ['Physics', 'English', 'Math', 'Urdu', 'Computer', 'Islamiyat']
+            color = ['navy', 'crimson', 'maroon', 'chocolate', 'blue', 'green', 'dodgerblue']
+            explode = [0, 0, 0, 0, 0, 0, 0, 0.1]
+            plt.title(name + " " + "Your Statistics")
+            plt.xlabel('Subjects')
+            plt.ylabel('Percentage')
+            plt.bar(labels, graph, color = color)
+            plt.show()
+
+
+        else:
+            print("DashBaazi")
+            webbrowser.open('https://makeagif.com/i/6NkpZJ')
+
+else:
+    print("wrong email")
+
